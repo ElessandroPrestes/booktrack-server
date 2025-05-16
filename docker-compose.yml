@@ -33,7 +33,7 @@ services:
     container_name: postgres
     restart: always
     environment:
-      POSTGRES_DB: books
+      POSTGRES_DB: booktrack
       POSTGRES_USER: developer
       POSTGRES_PASSWORD: developer
     volumes:

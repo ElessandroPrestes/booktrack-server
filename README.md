@@ -1,6 +1,6 @@
 # Título do projeto
 
-Aplicação encurtador de links.
+Aplicação baseada em API RESTful para gerenciamento de cadastros de livros, autores e assuntos.
 
 <br>
 
