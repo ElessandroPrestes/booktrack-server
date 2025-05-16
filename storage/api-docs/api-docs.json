@@ -1,0 +1,158 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "BookTrack API",
+        "description": "Documentação da API",
+        "contact": {
+            "email": "elessandrodev@gmail.com"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/autores": {
+            "get": {
+                "tags": [
+                    "Autores"
+                ],
+                "summary": "Listar todos os autores",
+                "operationId": "21f72ad76bb95b0c51e313b84b42a703",
+                "responses": {
+                    "200": {
+                        "description": "Lista de autores"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Autores"
+                ],
+                "summary": "Cadastrar novo autor",
+                "operationId": "c9f8d214d6250e0f085d91c214dead49",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nome"
+                                ],
+                                "properties": {
+                                    "nome": {
+                                        "type": "string",
+                                        "example": "James Howlett"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Autor criado com sucesso"
+                    }
+                }
+            }
+        },
+        "/api/autores/{id}": {
+            "get": {
+                "tags": [
+                    "Autores"
+                ],
+                "summary": "Exibir autor específico",
+                "operationId": "329de44608825d9d1a8b98e76bf81f49",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalhes do autor"
+                    },
+                    "404": {
+                        "description": "Autor não encontrado"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Autores"
+                ],
+                "summary": "Atualizar autor",
+                "operationId": "8e016da61bce1e8d2fe2b98fbdcc262e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nome"
+                                ],
+                                "properties": {
+                                    "nome": {
+                                        "type": "string",
+                                        "example": "J. K. Rowling"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Autor atualizado com sucesso"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Autores"
+                ],
+                "summary": "Excluir autor",
+                "operationId": "24f09c7c97f2c7e5bde2da5a7a81860f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Autor excluído com sucesso"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Autores",
+            "description": "Autores"
+        }
+    ]
+}
