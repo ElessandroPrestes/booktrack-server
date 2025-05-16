@@ -147,9 +147,148 @@
                     }
                 }
             }
+        },
+        "/api/assuntos": {
+            "get": {
+                "tags": [
+                    "Assuntos"
+                ],
+                "summary": "Listar todos os assuntos",
+                "operationId": "04195ad80a665f44654634bf25e771e2",
+                "responses": {
+                    "200": {
+                        "description": "Lista de assuntos"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Assuntos"
+                ],
+                "summary": "Cadastrar novo assunto",
+                "operationId": "9dfe20b66469eee61ebc90266d1f5612",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nome"
+                                ],
+                                "properties": {
+                                    "nome": {
+                                        "type": "string",
+                                        "example": "Literatura"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Assunto criado com sucesso"
+                    }
+                }
+            }
+        },
+        "/api/assuntos/{id}": {
+            "get": {
+                "tags": [
+                    "Assuntos"
+                ],
+                "summary": "Exibir assunto específico",
+                "operationId": "c15e5e63eca954996818836663535035",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalhes do assunto"
+                    },
+                    "404": {
+                        "description": "Assunto não encontrado"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Assuntos"
+                ],
+                "summary": "Atualizar assunto",
+                "operationId": "ccaf7858efad1849b4e79dc0349cab8b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nome"
+                                ],
+                                "properties": {
+                                    "nome": {
+                                        "type": "string",
+                                        "example": "Literatura"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Assunto atualizado com sucesso"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Assuntos"
+                ],
+                "summary": "Excluir assunto",
+                "operationId": "4d06d55e9b72799ef0a03087fed4e892",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Assunto excluído com sucesso"
+                    }
+                }
+            }
         }
     },
     "tags": [
+        {
+            "name": "Assuntos",
+            "description": "Gerenciamento de assuntos"
+        },
         {
             "name": "Autores",
             "description": "Autores"
