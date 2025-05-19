@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title', 40);
-            $table->string('publisher', 40);
-            $table->unsignedInteger('edition');
-            $table->string('publication_year', 4);
+            $table->string('publisher', 40)->nullable();
+            $table->unsignedSmallInteger('edition')->nullable();
+            $table->unsignedSmallInteger('publication_year', 4);
             $table->timestamps();
         });
     }

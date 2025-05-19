@@ -16,8 +16,7 @@ return new class extends Migration
             $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade');
 
             $table->primary(['book_id', 'subject_id']);
-            $table->index('book_id', 'book_subject_index1');
-            $table->index('subject_id', 'book_subject_index2');
+            $table->timestamps();
         });
     }
 

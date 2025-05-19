@@ -6,6 +6,7 @@ use App\Http\Requests\StoreAuthorRequest;
 use App\Http\Requests\UpdateAuthorRequest;
 use App\Http\Resources\AuthorResource;
 use App\Models\Author;
+use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -38,7 +39,10 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        return AuthorResource::collection(Author::all());
+        return response()->json([
+            'data' => AuthorResource::collection(Author::paginate(10)),
+            'message' => 'Autores recuperados com sucesso'
+        ], 200);
     }
 
     /**
@@ -62,7 +66,11 @@ class AuthorController extends Controller
     public function store(StoreAuthorRequest $request): JsonResponse
     {
         $author = Author::create($request->validated());
-        return response()->json(new AuthorResource($author), 201);
+
+        return response()->json([
+            'data' => new AuthorResource($author),
+            'message' => 'Autor criado com sucesso'
+        ], 201);
     }
 
     /**
@@ -86,9 +94,12 @@ class AuthorController extends Controller
      *     )
      * )
      */
-    public function show(Author $author): AuthorResource
+    public function show(Author $author): JsonResponse
     {
-        return new AuthorResource($author);
+        return response()->json([
+            'data' => new AuthorResource($author),
+            'message' => 'Autor recuperado com sucesso'
+        ], 200);
     }
 
     /**
@@ -118,7 +129,11 @@ class AuthorController extends Controller
     public function update(UpdateAuthorRequest $request, Author $author): JsonResponse
     {
         $author->update($request->validated());
-        return response()->json(new AuthorResource($author), 200);
+        
+        return response()->json([
+            'data' => new AuthorResource($author),
+            'message' => 'Autor atualizado com sucesso'
+        ], 200);
     }
 
     /**
@@ -141,6 +156,7 @@ class AuthorController extends Controller
     public function destroy(Author $author): JsonResponse
     {
         $author->delete();
+        
         return response()->json(null, 204);
     }
 }

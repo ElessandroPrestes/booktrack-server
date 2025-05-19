@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreSubjectRequest;
 use App\Http\Requests\UpdateSubjectRequest;
 use App\Http\Resources\SubjectResource;
-use App\Models\Models\Subject;
-use Illuminate\Contracts\Cache\Store;
+use App\Models\Subject;
 use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -33,7 +32,10 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        return SubjectResource::collection(Subject::all());
+        return response()->json([
+            'data' => SubjectResource::collection(Subject::paginate(10)),
+            'message' => 'Assuntos recuperados com sucesso'
+        ], 200);
     }
 
     /**
@@ -57,8 +59,10 @@ class SubjectController extends Controller
     public function store(StoreSubjectRequest $request): JsonResponse
     {
         $subject = Subject::create($request->validated());
-
-        return response()->json(new SubjectResource($subject), 201);
+        return response()->json([
+            'data' => new SubjectResource($subject),
+            'message' => 'Assunto criado com sucesso'
+        ], 201);
         
     }
 
@@ -83,9 +87,13 @@ class SubjectController extends Controller
      *     )
      * )
      */
-    public function show(Subject $subject): SubjectResource
+    public function show(Subject $subject): JsonResponse
     {
-        return new SubjectResource($subject);
+
+        return response()->json([
+            'data' => new SubjectResource($subject),
+            'message' => 'Assunto recuperado com sucesso'
+        ], 200);
     }
     
     /**
@@ -112,10 +120,14 @@ class SubjectController extends Controller
      *     )
      * )
      */
-    public function update(UpdateSubjectRequest $request, Subject $subject): SubjectResource
+    public function update(UpdateSubjectRequest $request, Subject $subject): JsonResponse
     {
         $subject->update($request->validated());
-        return new SubjectResource($subject);
+
+        return response()->json([
+            'data' => new SubjectResource($subject),
+            'message' => 'Assunto atualizado com sucesso'
+        ], 200);
     }
 
     /**
