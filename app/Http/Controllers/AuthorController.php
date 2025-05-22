@@ -53,8 +53,8 @@ class AuthorController extends Controller
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
-     *             required={"nome"},
-     *             @OA\Property(property="nome", type="string", example="James Howlett")
+     *             required={"name"},
+     *             @OA\Property(property="name", type="string", example="James Howlett")
      *         )
      *     ),
      *     @OA\Response(
@@ -116,8 +116,8 @@ class AuthorController extends Controller
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
-     *             required={"nome"},
-     *             @OA\Property(property="nome", type="string", example="J. K. Rowling")
+     *             required={"name"},
+     *             @OA\Property(property="name", type="string", example="J. K. Rowling")
      *         )
      *     ),
      *     @OA\Response(

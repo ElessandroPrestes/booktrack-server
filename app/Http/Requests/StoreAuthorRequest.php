@@ -23,16 +23,16 @@ class StoreAuthorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'nome.required' => 'O campo nome é obrigatório.',
-            'nome.string'   => 'O campo nome deve ser uma string.',
-            'nome.max'      => 'O campo nome deve ter no máximo 255 caracteres.',
+            'name.required' => 'O campo nome é obrigatório.',
+            'name.string'   => 'O campo nome deve ser uma string.',
+            'name.max'      => 'O campo nome deve ter no máximo 255 caracteres.',
         ];
     }
 }

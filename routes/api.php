@@ -13,3 +13,5 @@ Route::get('/user', function (Request $request) {
 Route::apiResource('autores', AuthorController::class);
 
 Route::apiResource('assuntos', SubjectController::class);
+
+

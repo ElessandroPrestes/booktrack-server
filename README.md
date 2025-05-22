@@ -89,7 +89,7 @@ Adminer - Ferramenta de gerenciamento de banco de dados
     servidor : postgres
     user     : developer
     password : developer
-    database : books
+    database : booktrack
 
 Laravel telescope - Para uma melhor análise, das informações obtidas atraves da aplicação.
 

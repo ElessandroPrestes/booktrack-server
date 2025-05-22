@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title', 40);
             $table->string('publisher', 40)->nullable();
             $table->unsignedSmallInteger('edition')->nullable();
-            $table->unsignedSmallInteger('publication_year', 4);
+            $table->unsignedSmallInteger('publication_year');
             $table->timestamps();
         });
     }
